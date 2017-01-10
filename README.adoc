@@ -1,0 +1,44 @@
+== Neo4j StackOverflow Import for Community Graph (and other uses)
+
+Currently uses Python and iPython Notebook, the StackOverflow API via requests.
+
+Run the script and notebook server with these environment variables:
+
+.nb.sh
+----
+cat ../nb.sh 
+export NEO4J_URL=bolt://localhost
+export NEO4J_USER=neo4j
+export NEO4J_PASSWORD=****
+
+ipython notebook 
+----
+
+=== Approach
+
+* Use StackOverflow API with pre-authorized URL to retrieve data for the Neo4j tag
+* Use idempotent Cypher statement to merge Questions, Users, Answers, Tags
+* page over the data until all is imported
+
+=== Data Model
+
+Uses the StackOverflow part of this data model:
+
+image::https://github.com/community-graph/documentation/raw/master/community_graph.png[]
+
+=== TODO
+
+* store in json files and then import those
+
+=== References
+
+* https://api.stackexchange.com/docs/questions
+* https://data.stackexchange.com/stackoverflow/queries
+
+Neo4j & StackOverflow
+
+* http://stackoverflow.com/questions/tagged/neo4j
+* https://neo4j.com/blog/import-10m-stack-overflow-questions/
+* https://neo4j.com/blog/cypher-load-json-from-url/
+* https://neo4j.com/blog/bulk-data-import-neo4j-3-0/
+* https://github.com/jexp/neo4j-stackoverflow-import
